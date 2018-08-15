@@ -56,7 +56,15 @@ Inside of docker-compose.yaml, replace the traefik.frontend.rule label with your
 
 ## Deployment
 
-use the docker-compose.yml to run the container, e.g. with -d flag for detached
+_Important:_ The line
+
+```
+caServer = "https://acme-staging.api.letsencrypt.org/directory"
+```
+
+in traefik.toml creates a fake tls certificate, which should not be used in production. This line is used for staging and testing to prevent exceeding rate limits on Let's Encrypt. Comment it out if you are setting up the service or playing around with the settings.
+
+Use the docker-compose.yml to run the container, e.g. with -d flag for detached
 
 ```sh
 docker-compose -f docker-compose.yml up -d

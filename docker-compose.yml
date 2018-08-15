@@ -20,7 +20,7 @@ services:
       - ./acme.json:/etc/traefik/acme.json
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:monitor.server.timothy.de"
+      - "traefik.frontend.rule=Host:monitor.timothy.de"
       - "traefik.port=8080"
     networks:
       - proxy
