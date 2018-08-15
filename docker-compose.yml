@@ -1,26 +1,26 @@
-version: '3.3'
+version: "3.3"
 
 networks:
-  internal:
-    external: true
-  proxy:
-    external: true
+  internal:
+    external: true
+  proxy:
+    external: true
 
 services:
-  traefik:
-    image: traefik:1.5.4
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "8080:8080"
-      - "443:443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik.toml:/etc/traefik/traefik.toml
-      - ./acme.json:/etc/traefik/acme.json
-    labels:    
-      - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:monitor.server.timothy.de"
-      - "traefik.port=8080"
-    networks:
-      - proxy
+  traefik:
+    image: traefik:1.5.4
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "443:433"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/etc/traefik/traefik.toml
+      - ./acme.json:/etc/traefik/acme.json
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:monitor.server.timothy.de"
+      - "traefik.port=8080"
+    networks:
+      - proxy
