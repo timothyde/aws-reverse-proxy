@@ -17,7 +17,7 @@ Use [this gist](https://gist.github.com/benfogel/041e3c4b8b856cdcdfd8d9d5aa0a7f7
 
 To create a password for the Traefik admin tools, we are gonna use **htpasswd**, which can be installed via
 
-```
+```sh
 sudo yum install httpd-tools
 ```
 
@@ -25,7 +25,7 @@ sudo yum install httpd-tools
 
 First up, create a password for your admin user with the following command, replacing <your_secure_password> with your password and save the output for later.
 
-```
+```sh
 htpasswd -nb admin <your_secure_password>
 
 Output
@@ -56,7 +56,11 @@ Inside of docker-compose.yaml, replace the traefik.frontend.rule label with your
 
 ## Deployment
 
--
+use the docker-compose.yml to run the container, e.g. with -d flag for detached
+
+```sh
+docker-compose -f docker-compose.yml up -d
+```
 
 ## Built With
 

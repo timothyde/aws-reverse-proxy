@@ -1,23 +1,27 @@
 defaultEntryPoints = ["http", "https"]
+
 [web]
 address = ":8080"
-  [web.auth.basic]
-  users = ["admin:$apr1$eJIJiY.5$CIBbuAoEPz3KOiI1ub7LH0"]
-[entryPoints]
-  [entryPoints.http]
-  address = ":80"
-    [entryPoints.http.redirect]
-      entryPoint = "https"
-  [entryPoints.https]
-  address = ":443"
-    [entryPoints.https.tls]
-[acme]
-  email = "hello@timothy.de"
-  storage = "acme.json"
-  entryPoint = "https"
-  OnHostRule = true
-  onDemand = false
-  caServer = "https://acme-staging.api.letsencrypt.org/directory"
+[web.auth.basic]
+users = ["admin:$apr1$eJIJiY.5$CIBbuAoEPz3KOiI1ub7LH0"]
 
+[entryPoints]
+[entryPoints.http]
+address = ":80"
+[entryPoints.http.redirect]
+entryPoint = "https"
+[entryPoints.https]
+address = ":443"
+[entryPoints.https.tls]
+
+[acme]
+email = "hello@timothy.de"
+storage = "acme.json"
+entryPoint = "https"
+OnHostRule = true
+onDemand = false
+caServer = "https://acme-staging.api.letsencrypt.org/directory"
 [acme.httpChallenge]
-  entryPoint = "http"
+entryPoint = "http"
+
+[docker]
